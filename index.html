@@ -52,8 +52,7 @@
     const year = parseInt(document.getElementById("set-year").value);
     const date = new Date().getFullYear();
     const currentAge = date - year; // Get the age based on the current year.
-    const monthValue = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Value of days in all months
-    const daysInMonth = monthValue[months]; // The value of the month from the user input.
+    const monthValue = 12 - months; // The value of the month from the user input.
     document.querySelector("#get-years").innerHTML = currentAge; // Update years
     document.querySelector("#get-months").innerHTML = daysInMonth; // Update months
     document.querySelector("#get-days").innerHTML = days; // Update days
