@@ -1,45 +1,26 @@
-@font-face {
-    font-family: 'Poppins';
-    src: 
-      url('assets/fonts/Poppins-Regular.ttf') format('truetype'),
-      url('assets/fonts/Poppins-Bold.ttf') format('truetype'),
-      url('assets/fonts/Poppins-Italic.ttf') format('truetype'),
-      url('assets/fonts/Poppins-BoldItalic.ttf') format('truetype'),
-      url('assets/fonts/Poppins-ExtraBold.ttf') format('truetype'),
-      url('assets/fonts/Poppins-ExtraBoldItalic.ttf') format('truetype');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;900&family=Roboto:wght@400;700;900&display=swap');
+/*font-family: 'Outfit', sans-serif;
+font-family: 'Roboto', sans-serif;*/
+ body {
+    font-family: 'Outfit', sans-serif;
   }
-  
-  :root {
-    --font-weight-normal: normal;
-    --font-weight-bold: bold;
-    --font-weight-extra-bold: 800;
-    --font-style-normal: normal;
-    --font-style-italic: italic;
-  }
-.container{
+  .container{
     min-height: 100vh;
     display: grid;    
     place-content: center;
-    background-color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 0%, 94%);
 }
 .content{
-    background-color: hsl(0, 0%, 86%);
-    /* background-color: hsl(0, 0%, 94%) */
+    background-color: hsl(0, 0%, 100%);
     /*Border */
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
-    border-bottom-right-radius: 70px;
+    border-bottom-right-radius: 150px;
     /*Border */
     display: grid;
-    width: 450px;
+    padding: 45px;
 }
-.line{
-    width: 112px;
-    height: 47px;
-    border: 1px solid black;
-    position: absolute;
-    }
 .form-group{
     display: flex;
     flex-direction: column;
@@ -47,15 +28,56 @@
 }
 #form-container{
     display: flex;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+#form-container label{
+    color: hsl(0, 1%, 44%);
 }
 .btn{
     background-color: hsl(259, 100%, 65%);
     border-radius: 100%;
     border: none;
-    scale: 0.6;
+    scale: 0.9;
     height: 100px;
     width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.age-display h1{
+    margin: 0; /* Remove vertical margin */
+    font-style: italic;
+    font-size: 72px;
+    
+}
+.age-display span{
+    color: hsl(259, 100%, 65%);
+}
+.img-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .line {
+    width: 450px;
+    height: 2px;
+    background-color: hsl(0, 0%, 86%);
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+/*CUSTOM BTN DESIGN*/
+.custom-btn{
+    height: 30px;
+    width: 100px;
+    margin-right: 40px;
+    margin-top: 10px;
+    border: 1px solid hsl(0, 0%, 94%);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 32px;
+    font-weight: bold;
+}
+.custom-btn::placeholder {
+    font-size: 21px;
+  }
