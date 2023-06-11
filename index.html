@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <title>Age calculator app</title>
   <link rel="stylesheet" href="src/styles.css">
+  <!--jQuery Code-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#myButton").on('click', function() {
+        $("#form-container").submit();
+      });
+    });
+  </script>
 </head>
 <body>
 <main>
@@ -13,36 +22,45 @@
     <form action="#" id="form-container">
       <div class="form-group">
         <label for="day">Day</label>
-        <input class="custom-btn" type="text" name="day" id="day" placeholder="DD">
-      </div>
+        <input class="custom-btn" type="number" name="day" id="set-day" placeholder="DD" required></div>
       <div class="form-group">
         <label for="month">Month</label>
-        <input class="custom-btn" type="text" name="month" id="month" placeholder="MM">
+        <input class="custom-btn" type="number" name="month" id="set-month" placeholder="MM" required>
       </div>
       <div class="form-group">
         <label for="year">Year</label>
-        <input class="custom-btn" type="text" name="year" id="year" placeholder="YYYY">
+        <input class="custom-btn" type="number" name="year" id="set-year" placeholder="YYYY"  required>
       </div>
     </form>
     <div class="img-container">
       <div class="line"></div>
-      <div class="btn"><a href="#"><img src="assets/images/icon-arrow.svg" alt="btn"></a></div>
+      <div class="btn"><a href="#" id="myButton" onclick="ageCalculator(event)"><img src="assets/images/icon-arrow.svg" alt="btn"></a></div>
     </div>
     <div class="age-display">
-      <h1><span id="years">--</span> years</h1>
-      <h1><span id="months">--</span> months</h1>
-      <h1><span id="days">--</span> days</h1>
+      <h1><span id="get-years">--</span> years</h1>
+      <h1><span id="get-months">--</span> months</h1>
+      <h1><span id="get-days">--</span> days</h1>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
+<!-- Age calculator-->
+<script type="text/javascript">
+  function ageCalculator(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const days = parseInt(document.getElementById("set-day").value);
+    const months = parseInt(document.getElementById("set-month").value);
+    const year = parseInt(document.getElementById("set-year").value);
+    const date = new Date().getFullYear();
+    const currentAge = date - year; // Get the age based on the current year.
+    const monthValue = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Value of days in all months
+    const daysInMonth = monthValue[months]; // The value of the month from the user input.
+    document.querySelector("#get-years").innerHTML = currentAge; // Update years
+    document.querySelector("#get-months").innerHTML = daysInMonth; // Update months
+    document.querySelector("#get-days").innerHTML = days; // Update days
+    return event;
+  }
+  
+</script>
 </main>
 </body>
 </html>
