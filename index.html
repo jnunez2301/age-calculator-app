@@ -50,14 +50,20 @@
     const days = parseInt(document.getElementById("set-day").value);
     const months = parseInt(document.getElementById("set-month").value);
     const year = parseInt(document.getElementById("set-year").value);
+   
     const date = new Date().getFullYear();
     const currentAge = date - year; // Get the age based on the current year.
-    const monthsRemaining = 12 - months; // Calculate the remaining months until the end of the current year.
-    const monthValue = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Value of days in all months
-    const daysInMonth = monthValue[monthsRemaining]; // The value of the remaining months
-    document.querySelector("#get-years").innerHTML = currentAge; // Update years
+    const monthsRemaining =  12 - month;
+    const monthValue = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; // Value of days in all months    
+const daysInMonth = monthValue[monthsRemaining]; // The value of the remaining months
+ if(days > 0 && months > 0 && year > 0){   document.querySelector("#get-years").innerHTML = currentAge; // Update years
     document.querySelector("#get-months").innerHTML = monthsRemaining; // Update months
-    document.querySelector("#get-days").innerHTML = days; // Update days
+    document.querySelector("#get-days").innerHTML = days; // Update days}
+else{
+document.querySelector('#get-years').innerHTML= "--";
+document.querySelector('#get-months').innerHTML= "--";
+document.querySelector('#get-days').innerHTML="--";
+}
   }
 </script>
 </main>
