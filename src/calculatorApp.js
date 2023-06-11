@@ -17,8 +17,18 @@ function ageCalculator(day, month, year){
     const date = new Date().getFullYear();
     const yearValue= date - year;
     let sum = 0;
-    sum = day + (month*daysMonth) + (yearValue*daysYear);
-    return sum/365;
+    sum = (day + (month*daysMonth) + (yearValue*daysYear))/365;
+    
+    return sum;
 }
 
 console.log(ageCalculator(24, 09, 1984));
+/*
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#myButton").on('click', (function() {
+      $("#myForm").submit();
+    });
+});
+</script>
+*/
