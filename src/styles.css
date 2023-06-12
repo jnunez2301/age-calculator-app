@@ -26,6 +26,10 @@ font-family: 'Roboto', sans-serif;*/
     flex-direction: column;
     margin-bottom: 10px;
 }
+.form-group p{
+    width: 60%;
+    color: blue;
+}
 #form-container{
     display: flex;
     margin-left: 15px;
