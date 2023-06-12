@@ -47,44 +47,66 @@
 <!-- Age calculator-->
 <script type="text/javascript">
  function ageCalculator(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault(); // Prevent the default form submission behavior
 
-  const inputDays = parseInt(document.getElementById("set-day").value);
-  const inputMonths = parseInt(document.getElementById("set-month").value);
-  const inputYear = parseInt(document.getElementById("set-year").value);
-  const currentYear = new Date().getFullYear();
+    const inputDays = parseInt(document.getElementById("set-day").value);
+    const inputMonths = parseInt(document.getElementById("set-month").value);
+    const inputYear = parseInt(document.getElementById("set-year").value);
+    const currentYear = new Date().getFullYear();
 
-  if (!isNaN(inputDays) && !isNaN(inputMonths) && !isNaN(inputYear)) {
-    const birthDate = new Date(inputYear, inputMonths - 1, inputDays);
-    const diffMilliseconds = Date.now() - birthDate.getTime();
-    const ageDate = new Date(diffMilliseconds); // This is a temporary date object to calculate the age
+    // Clear previous errors
+    clearErrors();
 
-    const years = ageDate.getUTCFullYear() - 1970;
-    const months = ageDate.getUTCMonth();
-    const days = ageDate.getUTCDate() - 1;
+    // Validate input
+    let isValid = true;
 
-    document.querySelector("#get-years").innerHTML = years;
-    document.querySelector("#get-months").innerHTML = months;
-    document.querySelector("#get-days").innerHTML = days;
-  } else {
-    document.querySelector("#get-years").innerHTML = "--";
-    document.querySelector("#get-months").innerHTML = "--";
-    document.querySelector("#get-days").innerHTML = "--";
-    //Insert a valid input
-  var errorDay = document.createElement("p");
-  errorDay.innerHTML = "Must be a valid day";
-  document.querySelector("#err-day").appendChild(errorDay);
-  
-  var errorMonth = document.createElement("p");
-  errorMonth.innerHTML = "Must be a valid month";
-  document.querySelector("#err-month").appendChild(errorMonth);
+    if (isNaN(inputDays) || inputDays < 1 || inputDays > 31) {
+      displayError("err-day", "Must be a valid day");
+      isValid = false;
+    }
 
-  var errorYear = document.createElement("p");
-  errorYear.innerHTML = "Must be a valid year";
-  document.querySelector("#err-year").appendChild(errorYear);
+    if (isNaN(inputMonths) || inputMonths < 1 || inputMonths > 12) {
+      displayError("err-month", "Must be a valid month");
+      isValid = false;
+    }
+
+    if (isNaN(inputYear) || inputYear.toString().length !== 4) {
+      displayError("err-year", "Must be a valid year");
+      isValid = false;
+    }
+
+    if (isValid) {
+      const birthDate = new Date(inputYear, inputMonths - 1, inputDays);
+      const diffMilliseconds = Date.now() - birthDate.getTime();
+      const ageDate = new Date(diffMilliseconds); // This is a temporary date object to calculate the age
+
+      const years = ageDate.getUTCFullYear() - 1970;
+      const months = ageDate.getUTCMonth();
+      const days = ageDate.getUTCDate() - 1;
+
+      document.querySelector("#get-years").innerHTML = years;
+      document.querySelector("#get-months").innerHTML = months;
+      document.querySelector("#get-days").innerHTML = days;
+    } else {
+      document.querySelector("#get-years").innerHTML = "--";
+      document.querySelector("#get-months").innerHTML = "--";
+      document.querySelector("#get-days").innerHTML = "--";
+    }
   }
-}
-
+  function displayError(elementId, errorMessage) {
+    const errorElement = document.getElementById(elementId);
+    const errorParagraph = errorElement.querySelector(".error-message");
+    if (!errorParagraph) {
+      const newErrorParagraph = document.createElement("p");
+      newErrorParagraph.className = "error-message";
+      newErrorParagraph.innerHTML = errorMessage;
+      errorElement.appendChild(newErrorParagraph);
+    }
+  }
+  function clearErrors() {
+    const errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach((errorMessage) => errorMessage.remove());
+  }
 </script>
 </main>
 </body>

@@ -82,6 +82,8 @@ font-family: 'Roboto', sans-serif;*/
     font-size: 32px;
     font-weight: bold;
 }
-.custom-btn::placeholder {
-    font-size: 21px;
-  }
+@media (max-width: 700px){
+    .content{
+        scale: 0.55;
+    }
+}
